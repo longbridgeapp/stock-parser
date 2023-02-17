@@ -1,0 +1,40 @@
+package stock_parser
+
+type StockCodeParser Peg {
+  pos int
+  peekPos int
+}
+
+Item <- Line* !.
+Line <- Stock / OTHER 
+
+# Any other characters, to ignore
+OTHER <- (.)
+
+# Match stockcode
+Stock <- ( 
+  # $BABA$, $BABA.US$
+  '$' Code (Suffix / Suffix?) '$' /
+
+  # $BABA.US $700.HK BABA.US 700.HK
+  '$'? Code Suffix /
+
+  # (NYSE: A)
+  '(' ('NYSE' / 'NASDAQ') ('：' / ':') SP* USCode ')'
+)
+
+Code <- (USCode / HKCode / ACode)
+USCode <- Letter+
+HKCode <- Number+
+ACode <- Number+
+
+Letter <- [A-Z]
+Number <- [0-9]
+
+Suffix <- '.' (Market / "O")
+
+Market <- 'HK' / 'US' / 'SG' / 'SH' / 'SZ' / 'KL'
+
+# Any spaces
+SP <- " " / "\t"
+
