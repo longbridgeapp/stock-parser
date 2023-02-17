@@ -1,9 +1,5 @@
 package stock_parser
 
-import (
-	"fmt"
-)
-
 func Parse(input string, cb func(code, market, match string) string) (out string) {
 	parser := StockCodeParser{Buffer: input}
 	parser.Init()
@@ -32,7 +28,7 @@ func Parse(input string, cb func(code, market, match string) string) (out string
 			match := ""
 
 			if node.pegRule == ruleStock {
-				fmt.Println("ruleStock", node.begin, node.end, str(node))
+				// fmt.Println("ruleStock", node.begin, node.end, str(node))
 
 				match = str(node)
 
