@@ -24,7 +24,7 @@ func main() {
 
 func Parse(ctx context.Context, body string) string {
   // preproccess
-	out := body
+  out := body
   body = preprocess(body)
 
   // Use with StockInfo SDK
