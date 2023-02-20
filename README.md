@@ -18,7 +18,7 @@ import (
 func main() {
 	out := Parse("看好 $BABA 和 $XPEV 未来有好的增长")
 	fmt.Println(out)
-	// 看好 <span type="security-tag" counter_id="" name="BABA">$BABA.US</span> 和 <span type="security-tag" counter_id="" name="XPEV">$XPEV.US</span> 未来有好的增长
+	// 看好 <span type="security-tag" counter_id="ST/US/BABA" name="阿里巴巴">$阿里巴巴.US</span> 和 <span type="security-tag" counter_id="ST/US/XPEV" name="小鹏汽车">$X小鹏汽车.US</span> 未来有好的增长
 }
 
 
