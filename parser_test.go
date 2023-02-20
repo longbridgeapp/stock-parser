@@ -39,6 +39,8 @@ func TestParse(t *testing.T) {
 	assert_matches_code(t, `Tesla Inc (<span type="security-tag" counter_id="ST/US/TSLA" name="TSLA">$TSLA.US</span>) will finalise a deal to invest in a production facility in his country`, "Tesla Inc (TSLA.O) will finalise a deal to invest in a production facility in his country")
 	assert_matches_code(t, "Only the fortune of Tesla's (TSLA)", "Only the fortune of Tesla's (TSLA)")
 	assert_matches_code(t, `阿里巴巴<span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span>和腾讯<span type="security-tag" counter_id="ST/HK/700" name="700">$700.HK</span>发布财报`, "阿里巴巴$BABA.US$和腾讯$700.HK$发布财报")
+
+	assert_matches_code(t, `阿里巴巴 <span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 发布财报`, "阿里巴巴 $BABA 发布财报")
 }
 
 func TestSpecialMarket(t *testing.T) {

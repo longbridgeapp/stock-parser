@@ -19,6 +19,9 @@ Stock <- (
   # $BABA.US $700.HK BABA.US 700.HK
   '$'? Code Suffix /
 
+  # $BABA
+  '$' USCode /
+
   # (NYSE: A)
   '(' ('NYSE' / 'NASDAQ') ('：' / ':') SP* USCode ')'
 )

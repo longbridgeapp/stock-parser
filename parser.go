@@ -36,7 +36,7 @@ func Parse(input string, cb func(code, market, match string) string) (out string
 
 				for sub_node != nil {
 					switch sub_node.pegRule {
-					case ruleCode:
+					case ruleCode, ruleUSCode:
 						code = str(sub_node)
 					case ruleMarket:
 						market = str(sub_node)
