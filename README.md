@@ -10,15 +10,15 @@ And run benchmarks to compare the performance.
 package main
 
 import (
-	"fmt"
+  "fmt"
 
-	stock_parser "github.com/longbridgeapp/stock-parser"
+  stock_parser "github.com/longbridgeapp/stock-parser"
 )
 
 func main() {
-	out := Parse("看好 $BABA 和 $XPEV 未来有好的增长")
-	fmt.Println(out)
-	// 看好 <span type="security-tag" counter_id="ST/US/BABA" name="阿里巴巴">$阿里巴巴.US</span> 和 <span type="security-tag" counter_id="ST/US/XPEV" name="小鹏汽车">$X小鹏汽车.US</span> 未来有好的增长
+  out := Parse("看好 $BABA 和 $XPEV 未来有好的增长")
+  fmt.Println(out)
+  // 看好 <span type="security-tag" counter_id="ST/US/BABA" name="阿里巴巴">$阿里巴巴.US</span> 和 <span type="security-tag" counter_id="ST/US/XPEV" name="小鹏汽车">$X小鹏汽车.US</span> 未来有好的增长
 }
 
 
@@ -28,16 +28,16 @@ func Parse(ctx context.Context, body string) string {
   body = preprocess(body)
 
   // Use with StockInfo SDK
-	_ = stock_parser.Parse(body, func(code, market, match string) string {
-		if stock, ok := StockInfoSDK.GetCounterId(code, market); ok {
-			s := fmt.Sprintf(`<span type="security-tag" counter_id="%s" name="%s">$%s.%s</span>`, stock.CounterId, stock.Name, stock.Name, stock.Market)
-			// 替换
-			out = strings.ReplaceAll(out, match, s)
-		}
-		return out
-	})
+  _ = stock_parser.Parse(body, func(code, market, match string) string {
+    if stock, ok := StockInfoSDK.GetCounterId(code, market); ok {
+      s := fmt.Sprintf(`<span type="security-tag" counter_id="%s" name="%s">$%s.%s</span>`, stock.CounterId, stock.Name, stock.Name, stock.Market)
+      // 替换
+      out = strings.ReplaceAll(out, match, s)
+    }
+    return out
+  })
 
-	return out
+  return out
 }
 ```
 
@@ -76,7 +76,7 @@ peg_parse_large         time:   [331.86 µs 342.67 µs 358.57 µs]
 
 Use [https://github.com/pointlander/peg](https://github.com/pointlander/peg)
 
-```
+```sh
 go install github.com/pointlander/peg
 ```
 

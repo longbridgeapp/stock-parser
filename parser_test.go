@@ -43,7 +43,14 @@ func TestParse(t *testing.T) {
 	assert_matches_code(t, `阿里巴巴 <span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 发布财报`, "阿里巴巴 $BABA 发布财报")
 }
 
+func TestXueqiuLaohuFutu(t *testing.T) {
+	// 老虎雪球
+	assert_matches_code(t, `啊哈哈哈 <span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> <span type="security-tag" counter_id="ST/SH/601318" name="601318">$601318.SH</span> <span type="security-tag" counter_id="ST/HK/00700" name="00700">$00700.HK</span> 这些天，江苏省100多家外贸企业在境外参展招商，开拓市场。这家大型显示设备的制造企业前期团队已在国外开展对接，这次他们带了20多项新技术。`, "啊哈哈哈 $阿里巴巴(BABA)$ $中国平安(SH601318)$ $腾讯控股(00700)$ 这些天，江苏省100多家外贸企业在境外参展招商，开拓市场。这家大型显示设备的制造企业前期团队已在国外开展对接，这次他们带了20多项新技术。")
+
+	// 富途
+	assert_matches_code(t, `<span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 不错的哈哈哈  <span type="security-tag" counter_id="ST/HK/00700" name="00700">$00700.HK</span> 看好  <span type="security-tag" counter_id="ST/SZ/002241" name="002241">$002241.SZ</span> 也不错`, "$阿里巴巴(BABA.US)$ 不错的哈哈哈  $腾讯控股(00700.HK)$ 看好  $歌尔股份(002241.SZ)$ 也不错")
+}
+
 func TestSpecialMarket(t *testing.T) {
 	assert_matches_code(t, `美股简短的股票代码 <span type="security-tag" counter_id="ST/US/Q" name="Q">$Q.US</span>, <span type="security-tag" counter_id="ST/US/AB" name="AB">$AB.US</span>`, "美股简短的股票代码 Q.US, AB.US")
-	assert_matches_code(t, `Malaysia Market (<span type="security-tag" counter_id="ST/KL/NICH" name="NICH">$NICH.KL</span>)`, "Malaysia Market (NICH.KL)")
 }
