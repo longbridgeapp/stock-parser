@@ -1,7 +1,5 @@
 package stock_parser
 
-import "fmt"
-
 const (
 	MarketHK = "HK"
 	MarketUS = "US"
@@ -83,7 +81,6 @@ func (p *parser) parseFTStock(node *node32) (code, market, match string) {
 	r := p.r
 
 	match = r.str(node)
-	fmt.Println(match, ">>")
 	subNode := node.up
 	for subNode != nil {
 		switch subNode.pegRule {
@@ -104,7 +101,6 @@ func (p *parser) parseXLStock(node *node32) (code, market, match string) {
 	match = r.str(node)
 
 	subNode := node.up
-	fmt.Println(match, ">>", subNode.pegRule)
 	for subNode != nil {
 		switch subNode.pegRule {
 		case ruleUSCode, ruleACode:
