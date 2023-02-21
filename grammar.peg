@@ -6,7 +6,7 @@ type StockCodeParser Peg {
 }
 
 Item <- Line* !.
-Line <- FTStock / XLStock / Stock / OTHER 
+Line <- Stock / FTStock / XLStock / OTHER 
 
 # Any other characters, to ignore
 OTHER <- (.)
@@ -36,7 +36,7 @@ FTStock <- (
   '$' StockName '(' Code '.' Market ')' '$'  
 )
 
-StockName <- [^()]+
+StockName <- [^()SP]+
 
 Code <- (USCode / HKCode / ACode)
 
