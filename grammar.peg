@@ -23,7 +23,10 @@ Stock <- (
   '$' USCode /
 
   # (NYSE: A)
-  '(' ('NYSE' / 'NASDAQ') ('：' / ':') SP* USCode ')' 
+  '(' ('NYSE' / 'NASDAQ') ('：' / ':') SP* USCode ')' /
+
+  # (HK:2015) (US:BABA)
+  '(' Market ':' Code ')' 
 )
 
 XLStock <- (
