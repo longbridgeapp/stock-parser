@@ -99,21 +99,19 @@ func (p *parser) parseXLStock(node *node32) (code, market, match string) {
 	r := p.r
 
 	match = r.str(node)
-
 	subNode := node.up
 	for subNode != nil {
 		switch subNode.pegRule {
 		case ruleUSCode, ruleACode:
 			code = r.str(subNode)
-		case ruleHKCode:
+		case ruleHKCode, ruleHSCODE:
 			code = r.str(subNode)
 			market = MarketHK
-		case ruleMarket, ruleCNMarket:
+		case ruleMarket, ruleCNMarket, ruleHKMarket:
 			market = r.str(subNode)
 		}
 		subNode = subNode.next
 	}
-
 	return
 }
 
