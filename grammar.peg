@@ -16,8 +16,11 @@ Stock <- (
   # $BABA$, $BABA.US$
   '$' Code (Suffix / Suffix?) '$' /
 
-  # $BABA.US $700.HK BABA.US 700.HK
-  '$'? Code Suffix /
+  # $BABA.US $700.HK 
+  '$' Code Suffix /
+
+  # BABA.US 700.HK
+  ' '+ Code Suffix /
 
   # $BABA
   '$' USCode /
