@@ -6,7 +6,7 @@ type StockCodeParser Peg {
 }
 
 Item <- Line* !.
-Line <- Stock / FTStock / XLStock / OTHER 
+Line <-  FTStock / Stock / XLStock / OTHER 
 
 # Any other characters, to ignore
 OTHER <- (.)
