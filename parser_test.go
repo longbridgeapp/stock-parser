@@ -59,7 +59,7 @@ func TestXueqiuLaohuFutu(t *testing.T) {
 
 	assert_matches_code(t, `<span type="security-tag" counter_id="ST/US/COIN" name="COIN">$COIN.US</span> 开户现货交易了!`, `$CoinBase Global(COIN)$ 开户现货交易了!`)
 
-	assert_matches_code(t, `<span type="security-tag" counter_id="ST/SH/603200" name="603200">$603200.SH</span> 哈哈`, " $上海洗霸 (SH603200)$ 哈哈")
+	assert_matches_code(t, `<span type="security-tag" counter_id="ST/SH/603200" name="603200">$603200.SH</span> 哈哈`, "$上海洗霸 (SH603200)$ 哈哈")
 
 	// 富途
 	assert_matches_code(t, `<span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 不错的哈哈哈  <span type="security-tag" counter_id="ST/HK/00700" name="00700">$00700.HK</span> 看好  <span type="security-tag" counter_id="ST/SZ/002241" name="002241">$002241.SZ</span> 也不错`, "$阿里巴巴 (BABA.US)$ 不错的哈哈哈  $腾讯控股 (00700.HK)$ 看好  $歌尔股份 (002241.SZ)$ 也不错")
