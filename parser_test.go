@@ -42,7 +42,7 @@ func TestParse(t *testing.T) {
 
 	assert_matches_code(t, `阿里巴巴 <span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 发布财报`, "阿里巴巴 $BABA 发布财报")
 
-	assert_matches_code(t, `吉利交付 <span type="security-tag" counter_id="ST/HK/00175" name="00175">$00175.HK</span> 股票, 哈哈 <span type="security-tag" counter_id="ST/SH/603200" name="603200">$603200.SH</span> 哈哈`, `吉利交付 $00175.HK 股票, 哈哈 $上海洗霸(SH603200)$ 哈哈`)
+	assert_matches_code(t, `吉利交付 <span type="security-tag" counter_id="ST/HK/00175" name="00175">$00175.HK</span> 股票, 哈哈`, `吉利交付 $00175.HK 股票, 哈哈`)
 
 	assert_matches_code(t, `理想汽車 <span type="security-tag" counter_id="ST/HK/2015" name="2015">$2015.HK</span> 升不足 1%，阿里巴巴 <span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 升 1.06%。`, "理想汽車 (HK:2015) 升不足 1%，阿里巴巴 (US:BABA) 升 1.06%。")
 
@@ -56,6 +56,10 @@ func TestXueqiuLaohuFutu(t *testing.T) {
 	assert_matches_code(t, `<span type="security-tag" counter_id="ST/HK/09988" name="09988">$09988.HK</span> 中概股要发财报了，第一枪 今晚 百度来开，密切关注。`, `$百度集团-SW(09988)$ 中概股要发财报了，第一枪 今晚 百度来开，密切关注。`)
 
 	assert_matches_code(t, `<span type="security-tag" counter_id="ST/HK/HSTECH" name="HSTECH">$HSTECH.HK</span> your grandpa is still your grandpa! 又高又硬`, `$恒生科技指数(HKHSTECH)$ your grandpa is still your grandpa! 又高又硬`)
+
+	assert_matches_code(t, `<span type="security-tag" counter_id="ST/US/COIN" name="COIN">$COIN.US</span> 开户现货交易了!`, `$CoinBase Global(COIN)$ 开户现货交易了!`)
+
+	assert_matches_code(t, `<span type="security-tag" counter_id="ST/SH/603200" name="603200">$603200.SH</span> 哈哈`, " $上海洗霸 (SH603200)$ 哈哈")
 
 	// 富途
 	assert_matches_code(t, `<span type="security-tag" counter_id="ST/US/BABA" name="BABA">$BABA.US</span> 不错的哈哈哈  <span type="security-tag" counter_id="ST/HK/00700" name="00700">$00700.HK</span> 看好  <span type="security-tag" counter_id="ST/SZ/002241" name="002241">$002241.SZ</span> 也不错`, "$阿里巴巴 (BABA.US)$ 不错的哈哈哈  $腾讯控股 (00700.HK)$ 看好  $歌尔股份 (002241.SZ)$ 也不错")

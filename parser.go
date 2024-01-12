@@ -52,7 +52,6 @@ func (p *parser) consumeNode(node *node32, cb func(node, market, match string) s
 		code := ""
 		market := ""
 		match := ""
-
 		if node.pegRule == ruleStock {
 			code, market, match = p.parseStock(node)
 		} else if node.pegRule == ruleXLStock {

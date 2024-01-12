@@ -6,7 +6,7 @@ type StockCodeParser Peg {
 }
 
 Item <- Line* !.
-Line <-  FTStock / Stock / XLStock / OTHER 
+Line <-  FTStock / XLStock / Stock / OTHER 
 
 # Any other characters, to ignore
 OTHER <- (.)
@@ -33,7 +33,7 @@ Stock <- (
 )
 
 XLStock <- (
-  # $阿里巴巴(BABA)$ $中国平安(SH601318)$ $腾讯控股(00700)$ $百度集团-SW(09988)$ $恒生科技指数(HKHSTECH)$ $恒生指数(HKHSI)$ 
+  # $阿里巴巴(BABA)$ $中国平安(SH601318)$ $腾讯控股(00700)$ $百度集团-SW(09988)$ $恒生科技指数(HKHSTECH)$ $恒生指数(HKHSI)$ $CoinBase Global(COIN)$
   '$' StockName '(' (CNMarket ACode /  HKMarket HSCODE / USCode / HKCode) ')' '$'
 )
 
@@ -42,7 +42,7 @@ FTStock <- (
   '$' (StockName / StockName '-' Letter+)  '(' Code '.' Market ')' '$'  
 )
 
-StockName <- [^()'-']+
+StockName <- [^"()"]*
 
 Code <- (USCode / HKCode / ACode)
 
