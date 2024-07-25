@@ -520,6 +520,15 @@ func (p *StockCodeParser) Init(options ...func(*StockCodeParser) error) error {
 								l20:
 									position, tokenIndex = position14, tokenIndex14
 									if !_rules[ruleHKCode]() {
+										goto l21
+									}
+									goto l14
+								l21:
+									position, tokenIndex = position14, tokenIndex14
+									if !matchDot() {
+										goto l12
+									}
+									if !_rules[ruleUSCode]() {
 										goto l12
 									}
 								}
@@ -538,225 +547,225 @@ func (p *StockCodeParser) Init(options ...func(*StockCodeParser) error) error {
 						l12:
 							position, tokenIndex = position5, tokenIndex5
 							{
-								position22 := position
+								position23 := position
 								{
-									position23, tokenIndex23 := position, tokenIndex
+									position24, tokenIndex24 := position, tokenIndex
 									if buffer[position] != rune('$') {
-										goto l24
+										goto l25
 									}
 									position++
 									if !_rules[ruleCode]() {
-										goto l24
+										goto l25
 									}
 									{
-										position25, tokenIndex25 := position, tokenIndex
+										position26, tokenIndex26 := position, tokenIndex
 										if !_rules[ruleSuffix]() {
-											goto l26
+											goto l27
 										}
-										goto l25
-									l26:
-										position, tokenIndex = position25, tokenIndex25
+										goto l26
+									l27:
+										position, tokenIndex = position26, tokenIndex26
 										{
-											position27, tokenIndex27 := position, tokenIndex
+											position28, tokenIndex28 := position, tokenIndex
 											if !_rules[ruleSuffix]() {
-												goto l27
+												goto l28
 											}
-											goto l28
-										l27:
-											position, tokenIndex = position27, tokenIndex27
+											goto l29
+										l28:
+											position, tokenIndex = position28, tokenIndex28
 										}
-									l28:
+									l29:
 									}
+								l26:
+									if buffer[position] != rune('$') {
+										goto l25
+									}
+									position++
+									goto l24
 								l25:
+									position, tokenIndex = position24, tokenIndex24
 									if buffer[position] != rune('$') {
-										goto l24
-									}
-									position++
-									goto l23
-								l24:
-									position, tokenIndex = position23, tokenIndex23
-									if buffer[position] != rune('$') {
-										goto l29
-									}
-									position++
-									if !_rules[ruleCode]() {
-										goto l29
-									}
-									if !_rules[ruleSuffix]() {
-										goto l29
-									}
-									goto l23
-								l29:
-									position, tokenIndex = position23, tokenIndex23
-									if buffer[position] != rune('(') {
 										goto l30
 									}
 									position++
+									if !_rules[ruleCode]() {
+										goto l30
+									}
+									if !_rules[ruleSuffix]() {
+										goto l30
+									}
+									goto l24
+								l30:
+									position, tokenIndex = position24, tokenIndex24
+									if buffer[position] != rune('(') {
+										goto l31
+									}
+									position++
 									{
-										position31, tokenIndex31 := position, tokenIndex
+										position32, tokenIndex32 := position, tokenIndex
 										if buffer[position] != rune('N') {
-											goto l32
+											goto l33
 										}
 										position++
 										if buffer[position] != rune('Y') {
-											goto l32
+											goto l33
 										}
 										position++
 										if buffer[position] != rune('S') {
-											goto l32
+											goto l33
 										}
 										position++
 										if buffer[position] != rune('E') {
-											goto l32
+											goto l33
 										}
 										position++
-										goto l31
-									l32:
-										position, tokenIndex = position31, tokenIndex31
+										goto l32
+									l33:
+										position, tokenIndex = position32, tokenIndex32
 										if buffer[position] != rune('N') {
-											goto l30
+											goto l31
 										}
 										position++
 										if buffer[position] != rune('A') {
-											goto l30
+											goto l31
 										}
 										position++
 										if buffer[position] != rune('S') {
-											goto l30
+											goto l31
 										}
 										position++
 										if buffer[position] != rune('D') {
-											goto l30
+											goto l31
 										}
 										position++
 										if buffer[position] != rune('A') {
-											goto l30
+											goto l31
 										}
 										position++
 										if buffer[position] != rune('Q') {
-											goto l30
+											goto l31
 										}
 										position++
 									}
-								l31:
+								l32:
 									{
-										position33, tokenIndex33 := position, tokenIndex
+										position34, tokenIndex34 := position, tokenIndex
 										if buffer[position] != rune('：') {
-											goto l34
+											goto l35
 										}
 										position++
-										goto l33
-									l34:
-										position, tokenIndex = position33, tokenIndex33
+										goto l34
+									l35:
+										position, tokenIndex = position34, tokenIndex34
 										if buffer[position] != rune(':') {
-											goto l30
+											goto l31
 										}
 										position++
 									}
-								l33:
-								l35:
+								l34:
+								l36:
 									{
-										position36, tokenIndex36 := position, tokenIndex
+										position37, tokenIndex37 := position, tokenIndex
 										{
-											position37 := position
+											position38 := position
 											{
-												position38, tokenIndex38 := position, tokenIndex
+												position39, tokenIndex39 := position, tokenIndex
 												if buffer[position] != rune(' ') {
-													goto l39
+													goto l40
 												}
 												position++
-												goto l38
-											l39:
-												position, tokenIndex = position38, tokenIndex38
+												goto l39
+											l40:
+												position, tokenIndex = position39, tokenIndex39
 												if buffer[position] != rune('\t') {
-													goto l36
+													goto l37
 												}
 												position++
 											}
-										l38:
-											add(ruleSP, position37)
+										l39:
+											add(ruleSP, position38)
 										}
-										goto l35
-									l36:
-										position, tokenIndex = position36, tokenIndex36
+										goto l36
+									l37:
+										position, tokenIndex = position37, tokenIndex37
 									}
 									if !_rules[ruleUSCode]() {
-										goto l30
+										goto l31
 									}
 									if buffer[position] != rune(')') {
-										goto l30
+										goto l31
 									}
 									position++
-									goto l23
-								l30:
-									position, tokenIndex = position23, tokenIndex23
+									goto l24
+								l31:
+									position, tokenIndex = position24, tokenIndex24
 									{
 										switch buffer[position] {
 										case '(':
 											if buffer[position] != rune('(') {
-												goto l21
+												goto l22
 											}
 											position++
 											if !_rules[ruleMarket]() {
-												goto l21
+												goto l22
 											}
 											if buffer[position] != rune(':') {
-												goto l21
+												goto l22
 											}
 											position++
 											if !_rules[ruleCode]() {
-												goto l21
+												goto l22
 											}
 											if buffer[position] != rune(')') {
-												goto l21
+												goto l22
 											}
 											position++
 										case '$':
 											if buffer[position] != rune('$') {
-												goto l21
+												goto l22
 											}
 											position++
 											if !_rules[ruleUSCode]() {
-												goto l21
+												goto l22
 											}
 										default:
 											if buffer[position] != rune(' ') {
-												goto l21
+												goto l22
 											}
 											position++
-										l41:
+										l42:
 											{
-												position42, tokenIndex42 := position, tokenIndex
+												position43, tokenIndex43 := position, tokenIndex
 												if buffer[position] != rune(' ') {
-													goto l42
+													goto l43
 												}
 												position++
-												goto l41
-											l42:
-												position, tokenIndex = position42, tokenIndex42
+												goto l42
+											l43:
+												position, tokenIndex = position43, tokenIndex43
 											}
 											if !_rules[ruleCode]() {
-												goto l21
+												goto l22
 											}
 											if !_rules[ruleSuffix]() {
-												goto l21
+												goto l22
 											}
 										}
 									}
 
 								}
-							l23:
-								add(ruleStock, position22)
+							l24:
+								add(ruleStock, position23)
 							}
 							goto l5
-						l21:
+						l22:
 							position, tokenIndex = position5, tokenIndex5
 							{
-								position43 := position
+								position44 := position
 								if !matchDot() {
 									goto l3
 								}
-								add(ruleOTHER, position43)
+								add(ruleOTHER, position44)
 							}
 						}
 					l5:
@@ -767,13 +776,13 @@ func (p *StockCodeParser) Init(options ...func(*StockCodeParser) error) error {
 					position, tokenIndex = position3, tokenIndex3
 				}
 				{
-					position44, tokenIndex44 := position, tokenIndex
+					position45, tokenIndex45 := position, tokenIndex
 					if !matchDot() {
-						goto l44
+						goto l45
 					}
 					goto l0
-				l44:
-					position, tokenIndex = position44, tokenIndex44
+				l45:
+					position, tokenIndex = position45, tokenIndex45
 				}
 				add(ruleItem, position1)
 			}
@@ -788,356 +797,367 @@ func (p *StockCodeParser) Init(options ...func(*StockCodeParser) error) error {
 		nil,
 		/* 3 Stock <- <(('$' Code (Suffix / Suffix?) '$') / ('$' Code Suffix) / ('(' (('N' 'Y' 'S' 'E') / ('N' 'A' 'S' 'D' 'A' 'Q')) ('：' / ':') SP* USCode ')') / ((&('(') ('(' Market ':' Code ')')) | (&('$') ('$' USCode)) | (&(' ') (' '+ Code Suffix))))> */
 		nil,
-		/* 4 XLStock <- <('$' StockName '(' ((CNMarket ACode) / (HKMarket HSCODE) / USCode / HKCode) ')' '$')> */
+		/* 4 XLStock <- <('$' StockName '(' ((CNMarket ACode) / (HKMarket HSCODE) / USCode / HKCode / (. USCode)) ')' '$')> */
 		nil,
 		/* 5 FTStock <- <('$' (StockName / (StockName '-' Letter+)) '(' Code '.' Market ')' '$')> */
 		nil,
 		/* 6 StockName <- <(!('"' / ((&('"') '"') | (&(')') ')') | (&('(') '('))) .)*> */
 		func() bool {
 			{
-				position51 := position
-			l52:
+				position52 := position
+			l53:
 				{
-					position53, tokenIndex53 := position, tokenIndex
+					position54, tokenIndex54 := position, tokenIndex
 					{
-						position54, tokenIndex54 := position, tokenIndex
+						position55, tokenIndex55 := position, tokenIndex
 						{
-							position55, tokenIndex55 := position, tokenIndex
+							position56, tokenIndex56 := position, tokenIndex
 							if buffer[position] != rune('"') {
-								goto l56
+								goto l57
 							}
 							position++
-							goto l55
-						l56:
-							position, tokenIndex = position55, tokenIndex55
+							goto l56
+						l57:
+							position, tokenIndex = position56, tokenIndex56
 							{
 								switch buffer[position] {
 								case '"':
 									if buffer[position] != rune('"') {
-										goto l54
+										goto l55
 									}
 									position++
 								case ')':
 									if buffer[position] != rune(')') {
-										goto l54
+										goto l55
 									}
 									position++
 								default:
 									if buffer[position] != rune('(') {
-										goto l54
+										goto l55
 									}
 									position++
 								}
 							}
 
 						}
+					l56:
+						goto l54
 					l55:
-						goto l53
-					l54:
-						position, tokenIndex = position54, tokenIndex54
+						position, tokenIndex = position55, tokenIndex55
 					}
 					if !matchDot() {
-						goto l53
+						goto l54
 					}
-					goto l52
-				l53:
-					position, tokenIndex = position53, tokenIndex53
+					goto l53
+				l54:
+					position, tokenIndex = position54, tokenIndex54
 				}
-				add(ruleStockName, position51)
+				add(ruleStockName, position52)
 			}
 			return true
 		},
 		/* 7 Code <- <(USCode / HKCode / ACode)> */
 		func() bool {
-			position58, tokenIndex58 := position, tokenIndex
+			position59, tokenIndex59 := position, tokenIndex
 			{
-				position59 := position
+				position60 := position
 				{
-					position60, tokenIndex60 := position, tokenIndex
+					position61, tokenIndex61 := position, tokenIndex
 					if !_rules[ruleUSCode]() {
-						goto l61
-					}
-					goto l60
-				l61:
-					position, tokenIndex = position60, tokenIndex60
-					if !_rules[ruleHKCode]() {
 						goto l62
 					}
-					goto l60
+					goto l61
 				l62:
-					position, tokenIndex = position60, tokenIndex60
+					position, tokenIndex = position61, tokenIndex61
+					if !_rules[ruleHKCode]() {
+						goto l63
+					}
+					goto l61
+				l63:
+					position, tokenIndex = position61, tokenIndex61
 					if !_rules[ruleACode]() {
-						goto l58
+						goto l59
 					}
 				}
-			l60:
-				add(ruleCode, position59)
+			l61:
+				add(ruleCode, position60)
 			}
 			return true
-		l58:
-			position, tokenIndex = position58, tokenIndex58
+		l59:
+			position, tokenIndex = position59, tokenIndex59
 			return false
 		},
-		/* 8 USCode <- <Letter+> */
+		/* 8 USCode <- <('.'? Letter+)> */
 		func() bool {
-			position63, tokenIndex63 := position, tokenIndex
+			position64, tokenIndex64 := position, tokenIndex
 			{
-				position64 := position
-				if !_rules[ruleLetter]() {
-					goto l63
-				}
-			l65:
+				position65 := position
 				{
 					position66, tokenIndex66 := position, tokenIndex
-					if !_rules[ruleLetter]() {
+					if buffer[position] != rune('.') {
 						goto l66
 					}
-					goto l65
+					position++
+					goto l67
 				l66:
 					position, tokenIndex = position66, tokenIndex66
 				}
-				add(ruleUSCode, position64)
+			l67:
+				if !_rules[ruleLetter]() {
+					goto l64
+				}
+			l68:
+				{
+					position69, tokenIndex69 := position, tokenIndex
+					if !_rules[ruleLetter]() {
+						goto l69
+					}
+					goto l68
+				l69:
+					position, tokenIndex = position69, tokenIndex69
+				}
+				add(ruleUSCode, position65)
 			}
 			return true
-		l63:
-			position, tokenIndex = position63, tokenIndex63
+		l64:
+			position, tokenIndex = position64, tokenIndex64
 			return false
 		},
 		/* 9 HKCode <- <Number+> */
 		func() bool {
-			position67, tokenIndex67 := position, tokenIndex
+			position70, tokenIndex70 := position, tokenIndex
 			{
-				position68 := position
+				position71 := position
 				if !_rules[ruleNumber]() {
-					goto l67
+					goto l70
 				}
-			l69:
+			l72:
 				{
-					position70, tokenIndex70 := position, tokenIndex
+					position73, tokenIndex73 := position, tokenIndex
 					if !_rules[ruleNumber]() {
-						goto l70
+						goto l73
 					}
-					goto l69
-				l70:
-					position, tokenIndex = position70, tokenIndex70
+					goto l72
+				l73:
+					position, tokenIndex = position73, tokenIndex73
 				}
-				add(ruleHKCode, position68)
+				add(ruleHKCode, position71)
 			}
 			return true
-		l67:
-			position, tokenIndex = position67, tokenIndex67
+		l70:
+			position, tokenIndex = position70, tokenIndex70
 			return false
 		},
 		/* 10 ACode <- <Number+> */
 		func() bool {
-			position71, tokenIndex71 := position, tokenIndex
+			position74, tokenIndex74 := position, tokenIndex
 			{
-				position72 := position
+				position75 := position
 				if !_rules[ruleNumber]() {
-					goto l71
+					goto l74
 				}
-			l73:
+			l76:
 				{
-					position74, tokenIndex74 := position, tokenIndex
+					position77, tokenIndex77 := position, tokenIndex
 					if !_rules[ruleNumber]() {
-						goto l74
+						goto l77
 					}
-					goto l73
-				l74:
-					position, tokenIndex = position74, tokenIndex74
+					goto l76
+				l77:
+					position, tokenIndex = position77, tokenIndex77
 				}
-				add(ruleACode, position72)
+				add(ruleACode, position75)
 			}
 			return true
-		l71:
-			position, tokenIndex = position71, tokenIndex71
+		l74:
+			position, tokenIndex = position74, tokenIndex74
 			return false
 		},
 		/* 11 HSCODE <- <(('H' 'S' 'T' 'E' 'C' 'H') / ('H' 'S' 'I'))> */
 		nil,
 		/* 12 Letter <- <[A-Z]> */
 		func() bool {
-			position76, tokenIndex76 := position, tokenIndex
+			position79, tokenIndex79 := position, tokenIndex
 			{
-				position77 := position
+				position80 := position
 				if c := buffer[position]; c < rune('A') || c > rune('Z') {
-					goto l76
+					goto l79
 				}
 				position++
-				add(ruleLetter, position77)
+				add(ruleLetter, position80)
 			}
 			return true
-		l76:
-			position, tokenIndex = position76, tokenIndex76
+		l79:
+			position, tokenIndex = position79, tokenIndex79
 			return false
 		},
 		/* 13 Number <- <[0-9]> */
 		func() bool {
-			position78, tokenIndex78 := position, tokenIndex
+			position81, tokenIndex81 := position, tokenIndex
 			{
-				position79 := position
+				position82 := position
 				if c := buffer[position]; c < rune('0') || c > rune('9') {
-					goto l78
+					goto l81
 				}
 				position++
-				add(ruleNumber, position79)
+				add(ruleNumber, position82)
 			}
 			return true
-		l78:
-			position, tokenIndex = position78, tokenIndex78
+		l81:
+			position, tokenIndex = position81, tokenIndex81
 			return false
 		},
 		/* 14 Suffix <- <('.' (Market / ('o' / 'O')))> */
 		func() bool {
-			position80, tokenIndex80 := position, tokenIndex
+			position83, tokenIndex83 := position, tokenIndex
 			{
-				position81 := position
+				position84 := position
 				if buffer[position] != rune('.') {
-					goto l80
+					goto l83
 				}
 				position++
 				{
-					position82, tokenIndex82 := position, tokenIndex
+					position85, tokenIndex85 := position, tokenIndex
 					if !_rules[ruleMarket]() {
-						goto l83
+						goto l86
 					}
-					goto l82
-				l83:
-					position, tokenIndex = position82, tokenIndex82
+					goto l85
+				l86:
+					position, tokenIndex = position85, tokenIndex85
 					{
-						position84, tokenIndex84 := position, tokenIndex
+						position87, tokenIndex87 := position, tokenIndex
 						if buffer[position] != rune('o') {
-							goto l85
+							goto l88
 						}
 						position++
-						goto l84
-					l85:
-						position, tokenIndex = position84, tokenIndex84
+						goto l87
+					l88:
+						position, tokenIndex = position87, tokenIndex87
 						if buffer[position] != rune('O') {
-							goto l80
+							goto l83
 						}
 						position++
 					}
-				l84:
+				l87:
 				}
-			l82:
-				add(ruleSuffix, position81)
+			l85:
+				add(ruleSuffix, position84)
 			}
 			return true
-		l80:
-			position, tokenIndex = position80, tokenIndex80
+		l83:
+			position, tokenIndex = position83, tokenIndex83
 			return false
 		},
 		/* 15 Market <- <(CNMarket / ((&('S') SGMarket) | (&('U') USMarket) | (&('H') HKMarket)))> */
 		func() bool {
-			position86, tokenIndex86 := position, tokenIndex
+			position89, tokenIndex89 := position, tokenIndex
 			{
-				position87 := position
+				position90 := position
 				{
-					position88, tokenIndex88 := position, tokenIndex
+					position91, tokenIndex91 := position, tokenIndex
 					if !_rules[ruleCNMarket]() {
-						goto l89
+						goto l92
 					}
-					goto l88
-				l89:
-					position, tokenIndex = position88, tokenIndex88
+					goto l91
+				l92:
+					position, tokenIndex = position91, tokenIndex91
 					{
 						switch buffer[position] {
 						case 'S':
 							{
-								position91 := position
+								position94 := position
 								if buffer[position] != rune('S') {
-									goto l86
+									goto l89
 								}
 								position++
 								if buffer[position] != rune('G') {
-									goto l86
+									goto l89
 								}
 								position++
-								add(ruleSGMarket, position91)
+								add(ruleSGMarket, position94)
 							}
 						case 'U':
 							{
-								position92 := position
+								position95 := position
 								if buffer[position] != rune('U') {
-									goto l86
+									goto l89
 								}
 								position++
 								if buffer[position] != rune('S') {
-									goto l86
+									goto l89
 								}
 								position++
-								add(ruleUSMarket, position92)
+								add(ruleUSMarket, position95)
 							}
 						default:
 							if !_rules[ruleHKMarket]() {
-								goto l86
+								goto l89
 							}
 						}
 					}
 
 				}
-			l88:
-				add(ruleMarket, position87)
+			l91:
+				add(ruleMarket, position90)
 			}
 			return true
-		l86:
-			position, tokenIndex = position86, tokenIndex86
+		l89:
+			position, tokenIndex = position89, tokenIndex89
 			return false
 		},
 		/* 16 CNMarket <- <(('S' 'H') / ('S' 'Z'))> */
 		func() bool {
-			position93, tokenIndex93 := position, tokenIndex
+			position96, tokenIndex96 := position, tokenIndex
 			{
-				position94 := position
+				position97 := position
 				{
-					position95, tokenIndex95 := position, tokenIndex
+					position98, tokenIndex98 := position, tokenIndex
 					if buffer[position] != rune('S') {
-						goto l96
+						goto l99
 					}
 					position++
 					if buffer[position] != rune('H') {
+						goto l99
+					}
+					position++
+					goto l98
+				l99:
+					position, tokenIndex = position98, tokenIndex98
+					if buffer[position] != rune('S') {
 						goto l96
 					}
 					position++
-					goto l95
-				l96:
-					position, tokenIndex = position95, tokenIndex95
-					if buffer[position] != rune('S') {
-						goto l93
-					}
-					position++
 					if buffer[position] != rune('Z') {
-						goto l93
+						goto l96
 					}
 					position++
 				}
-			l95:
-				add(ruleCNMarket, position94)
+			l98:
+				add(ruleCNMarket, position97)
 			}
 			return true
-		l93:
-			position, tokenIndex = position93, tokenIndex93
+		l96:
+			position, tokenIndex = position96, tokenIndex96
 			return false
 		},
 		/* 17 HKMarket <- <('H' 'K')> */
 		func() bool {
-			position97, tokenIndex97 := position, tokenIndex
+			position100, tokenIndex100 := position, tokenIndex
 			{
-				position98 := position
+				position101 := position
 				if buffer[position] != rune('H') {
-					goto l97
+					goto l100
 				}
 				position++
 				if buffer[position] != rune('K') {
-					goto l97
+					goto l100
 				}
 				position++
-				add(ruleHKMarket, position98)
+				add(ruleHKMarket, position101)
 			}
 			return true
-		l97:
-			position, tokenIndex = position97, tokenIndex97
+		l100:
+			position, tokenIndex = position100, tokenIndex100
 			return false
 		},
 		/* 18 USMarket <- <('U' 'S')> */

@@ -34,7 +34,7 @@ Stock <- (
 
 XLStock <- (
   # $阿里巴巴(BABA)$ $中国平安(SH601318)$ $腾讯控股(00700)$ $百度集团-SW(09988)$ $恒生科技指数(HKHSTECH)$ $恒生指数(HKHSI)$ $CoinBase Global(COIN)$
-  '$' StockName '(' (CNMarket ACode /  HKMarket HSCODE / USCode / HKCode) ')' '$'
+  '$' StockName '(' (CNMarket ACode /  HKMarket HSCODE / USCode / HKCode / .USCode) ')' '$'
 )
 
 FTStock <- (
@@ -46,7 +46,7 @@ StockName <- [^"()"]*
 
 Code <- (USCode / HKCode / ACode)
 
-USCode <- Letter+
+USCode <- '.'?Letter+
 HKCode <- Number+
 ACode <- Number+
 
